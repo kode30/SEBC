@@ -62,4 +62,14 @@ $ source /etc/profile
 $ java -version
 
 ## Install the Cloudera Manager Server Packages
-$ sudo yum install cloudera-manager-daemons cloudera-manager-server
+   $ sudo yum install cloudera-manager-daemons cloudera-manager-server
+
+     Installing : cloudera-manager-daemons-5.11.2-1.cm5112.p0.6.el6.x86_64                                       1/2 
+     Installing : cloudera-manager-server-5.11.2-1.cm5112.p0.6.el6.x86_64                                        2/2 
+     Verifying  : cloudera-manager-server-5.11.2-1.cm5112.p0.6.el6.x86_64                                        1/2 
+     Verifying  : cloudera-manager-daemons-5.11.2-1.cm5112.p0.6.el6.x86_64                                       2/2 
+   Installed:
+     cloudera-manager-daemons.x86_64 0:5.11.2-1.cm5112.p0.6.el6                                                      
+     cloudera-manager-server.x86_64 0:5.11.2-1.cm5112.p0.6.el6                                                       
+   Complete!
+
