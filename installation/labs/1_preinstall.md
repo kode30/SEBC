@@ -345,7 +345,17 @@ $ sudo nano /etc/my.cnf
 
 $ sudo mv /var/lib/mysql/ib_logfile0 /var/lib/mysql.bak
 $ sudo mv /var/lib/mysql/ib_logfile1 /var/lib/mysql_ib_logfile1.bak
-###  <center> Download and copy the JDBC connector to all nodes.
+
+
+### Ensure the MySQL server starts at boot.
+$ sudo /sbin/chkconfig mysqld on 
+$ sudo /sbin/chkconfig --list mysqld
+    ysqld          0:off   1:off   2:on    3:on    4:on    5:on    6:off
+
+$ sudo service mysqld start
+    starting mysqld:                                           [  OK  ]
+    
+###  <center> Installing the MySQL JDBC Driver
 
 $ wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.44.zip -O m
 ysql_jdbc.zip
@@ -360,3 +370,50 @@ build.xml  CHANGES  COPYING  mysql-connector-java-5.1.44-bin.jar  README  README
 $ mv mysql-connector-java-5.1.44-bin.jar mysql-connector-java.jar
 $ ls
 build.xml  CHANGES  COPYING  mysql-connector-java.jar  README  README.txt  src
+
+
+## Creating Databases
+Log into MySQL as the root user:
+    $ mysql -u root -p
+    
+Create databases for the Activity Monitor, Reports Manager, Hive Metastore Server, Sentry Server, Cloudera Navigator Audit Server, and Cloudera Navigator Metadata Server:
+    create database amon DEFAULT CHARACTER SET utf8;
+    create database rman DEFAULT CHARACTER SET utf8;
+    create database metastore DEFAULT CHARACTER SET utf8;
+    create database sentry DEFAULT CHARACTER SET utf8;
+    create database nav DEFAULT CHARACTER SET utf8;
+    create database navms DEFAULT CHARACTER SET utf8;
+    
+    mysql>     create database amon DEFAULT CHARACTER SET utf8;
+    Query OK, 1 row affected (0.00 sec)
+    mysql>     create database rman DEFAULT CHARACTER SET utf8;
+    Query OK, 1 row affected (0.00 sec)
+    mysql>     create database metastore DEFAULT CHARACTER SET utf8;
+    Query OK, 1 row affected (0.00 sec)
+    mysql>     create database sentry DEFAULT CHARACTER SET utf8;
+    Query OK, 1 row affected (0.00 sec)
+    mysql>     create database nav DEFAULT CHARACTER SET utf8;
+    Query OK, 1 row affected (0.00 sec)
+    mysql>     create database navms DEFAULT CHARACTER SET utf8;
+    Query OK, 1 row affected (0.00 sec)
+    
+    
+    grant all on amon.* TO 'amon'@'%' IDENTIFIED BY 'cloudera';
+    grant all on rman.* TO 'rman'@'%' IDENTIFIED BY 'cloudera';
+    grant all on metastore.* TO 'metastore'@'%' IDENTIFIED BY 'cloudera';
+    grant all on sentry.* TO 'sentry'@'%' IDENTIFIED BY 'cloudera';
+    grant all on nav.* TO 'nav'@'%' IDENTIFIED BY 'cloudera';
+    grant all on navms.* TO 'navms'@'%' IDENTIFIED BY 'cloudera';
+    
+    mysql> grant all on amon.* TO 'amon'@'%' IDENTIFIED BY 'cloudera';
+    Query OK, 0 rows affected (0.00 sec)
+    mysql>     grant all on rman.* TO 'rman'@'%' IDENTIFIED BY 'cloudera';
+    Query OK, 0 rows affected (0.00 sec)
+    mysql>     grant all on metastore.* TO 'metastore'@'%' IDENTIFIED BY 'cloudera';
+    Query OK, 0 rows affected (0.00 sec)
+    mysql>     grant all on sentry.* TO 'sentry'@'%' IDENTIFIED BY 'cloudera';
+    Query OK, 0 rows affected (0.00 sec)
+    mysql>     grant all on nav.* TO 'nav'@'%' IDENTIFIED BY 'cloudera';
+    Query OK, 0 rows affected (0.00 sec)
+    mysql>     grant all on navms.* TO 'navms'@'%' IDENTIFIED BY 'cloudera';
+    Query OK, 0 rows affected (0.00 sec)
