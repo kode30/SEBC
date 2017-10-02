@@ -75,6 +75,7 @@ $ sudo nscd -g
 
 nscd: nscd not running!
 
+$ sudo yum install nscd
 $ sudo service nscd start
 
 Starting nscd:                                             [  OK  ]
