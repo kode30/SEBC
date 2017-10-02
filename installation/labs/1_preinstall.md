@@ -1,5 +1,11 @@
 1. Check vm.swappiness on all your nodes
-sudo nano /proc/sys/vm/swappiness
+$ cat /proc/sys/vm/swappiness
+60
+
+$sudo nano /proc/sys/vm/swappiness
+1
+
+$ cat /proc/sys/vm/swappiness
 1
 
 2. mount attributes of your volume(s)
@@ -44,3 +50,155 @@ Server:         169.254.169.254
 Address:        169.254.169.254#53
 Non-authoritative answer:
 11.0.128.10.in-addr.arpa        name = cdh-i1.c.safari-lab.internal.
+
+7. Show the nscd service is running
+$ sudo nscd -g 
+nscd: nscd not running!
+
+$ sudo service nscd start
+Starting nscd:                                             [  OK  ]
+
+$ sudo nscd -g 
+nscd configuration:
+
+              0  server debug level
+            52s  server runtime
+              5  current number of threads
+             32  maximum number of threads
+              0  number of times clients had to wait
+             no  paranoia mode enabled
+           3600  restart internal
+              5  reload count
+
+passwd cache:
+
+            yes  cache is enabled
+            yes  cache is persistent
+            yes  cache is shared
+            211  suggested size
+         216064  total data pool size
+            344  used data pool size
+            600  seconds time to live for positive entries
+             20  seconds time to live for negative entries
+              0  cache hits on positive entries
+              0  cache hits on negative entries
+              2  cache misses on positive entries
+              0  cache misses on negative entries
+              0% cache hit rate
+              4  current number of cached values
+              4  maximum number of cached values
+              0  maximum chain length searched
+              0  number of delays on rdlock
+              0  number of delays on wrlock
+              0  memory allocations failed
+            yes  check /etc/passwd for changes
+
+group cache:
+
+            yes  cache is enabled
+            yes  cache is persistent
+            yes  cache is shared
+            211  suggested size
+         216064  total data pool size
+            248  used data pool size
+           3600  seconds time to live for positive entries
+             60  seconds time to live for negative entries
+              0  cache hits on positive entries
+              0  cache hits on negative entries
+              1  cache misses on positive entries
+              1  cache misses on negative entries
+              0% cache hit rate
+              3  current number of cached values
+              3  maximum number of cached values
+              0  maximum chain length searched
+              0  number of delays on rdlock
+              0  number of delays on wrlock
+              0  memory allocations failed
+            yes  check /etc/group for changes
+
+hosts cache:
+
+            yes  cache is enabled
+            yes  cache is persistent
+            yes  cache is shared
+            211  suggested size
+         216064  total data pool size
+              0  used data pool size
+           3600  seconds time to live for positive entries
+             20  seconds time to live for negative entries
+              0  cache hits on positive entries
+              0  cache hits on negative entries
+              0  cache misses on positive entries
+              0  cache misses on negative entries
+              0% cache hit rate
+              0  current number of cached values
+              0  maximum number of cached values
+              0  maximum chain length searched
+              0  number of delays on rdlock
+              0  number of delays on wrlock
+              0  memory allocations failed
+            yes  check /etc/hosts for changes
+
+services cache:
+
+            yes  cache is enabled
+            yes  cache is persistent
+            yes  cache is shared
+            211  suggested size
+         216064  total data pool size
+              0  used data pool size
+          28800  seconds time to live for positive entries
+             20  seconds time to live for negative entries
+              0  cache hits on positive entries
+              0  cache hits on negative entries
+              0  cache misses on positive entries
+              0  cache misses on negative entries
+              0% cache hit rate
+              0  current number of cached values
+              0  maximum number of cached values
+              0  maximum chain length searched
+              0  number of delays on rdlock
+              0  number of delays on wrlock
+              0  memory allocations failed
+            yes  check /etc/services for changes
+              5  reload count
+netgroup cache:
+            yes  cache is enabled
+            yes  cache is persistent
+            yes  cache is shared
+            211  suggested size
+         216064  total data pool size
+              0  used data pool size
+          28800  seconds time to live for positive entries
+             20  seconds time to live for negative entries
+              0  cache hits on positive entries
+              0  cache hits on negative entries
+              0  cache misses on positive entries
+              0  cache misses on negative entries
+              0% cache hit rate
+              0  current number of cached values
+              0  maximum number of cached values
+              0  maximum chain length searched
+              0  number of delays on rdlock
+              0  number of delays on wrlock
+              0  memory allocations failed
+            yes  check /etc/netgroup for changes
+SELinux AVC Statistics:
+             11  entry lookups
+              8  entry hits
+              3  entry misses
+              2  entry discards
+              3  CAV lookups
+              1  CAV hits
+              2  CAV probes
+              2  CAV misses
+              
+8. Show the ntpd service is running
+
+$ chkconfig --list ntpd
+ntpd            0:off   1:off   2:on    3:on    4:on    5:on    6:off
+
+$ ntpq -p
+     remote           refid      st t when poll reach   delay   offset  jitter
+==============================================================================
+*metadata.google 71.79.79.71      2 u   92  128  377    0.331   -1.494   0.187
