@@ -299,3 +299,11 @@ ysql_jdbc.zip
 
 sudo cp -pR mysql-connector-java-5.1.44 /usr/share/java/
 $unzip mysql_jdbc.zip 
+
+$ cd /usr/share/java/
+$ ls
+build.xml  CHANGES  COPYING  mysql-connector-java-5.1.44-bin.jar  README  README.txt  src
+
+$ mv mysql-connector-java-5.1.44-bin.jar mysql-connector-java.jar
+$ ls
+build.xml  CHANGES  COPYING  mysql-connector-java.jar  README  README.txt  src
