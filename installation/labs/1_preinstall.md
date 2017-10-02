@@ -23,6 +23,14 @@ sda      8:0    0  80G  0 disk
 
 3. ext-based volumes, list the reserve space setting
 
+$ df -h
+
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda1        79G  1.3G   74G   2% /
+tmpfs            15G     0   15G   0% /dev/shm
+/dev/sdb         79G   56M   75G   1% /mnt/data_cloudera
+/dev/sdc         79G   57M   75G   1% /mnt/data_log
+
 4. Disable transparent hugepage support
 sudo nano /etc/rc.local
 echo never > /sys/kernel/mm/transparent_hugepage/defrag
