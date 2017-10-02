@@ -1,16 +1,25 @@
 ## <center> System Configuration Checks
 1. Check vm.swappiness on all your nodes
 $ cat /proc/sys/vm/swappiness
+
 60
 
 $sudo nano /proc/sys/vm/swappiness
+
 1
 
 $ cat /proc/sys/vm/swappiness
+
 1
 
 2. mount attributes of your volume(s)
 lsblk
+
+NAME   MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+sdc      8:32   0  80G  0 disk /mnt/data_log
+sdb      8:16   0  80G  0 disk /mnt/data_cloudera
+sda      8:0    0  80G  0 disk 
+└─sda1   8:1    0  80G  0 part /
 
 3. ext-based volumes, list the reserve space setting
 
