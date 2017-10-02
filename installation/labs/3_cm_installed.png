@@ -1,0 +1,46 @@
+## Install a supported Oracle JDK on your first node
+
+$ wget https://archive.cloudera.com/cm5/redhat/6/x86_64/cm/5.11/RPMS/x86_64/oracle-j2sd
+k1.7-1.7.0+update67-1.x86_64.rpm
+--2017-10-02 20:14:39--  https://archive.cloudera.com/cm5/redhat/6/x86_64/cm/5.11/RPMS/x86_64/oracle-j2sdk1.7-1
+.7.0+update67-1.x86_64.rpm
+Resolving archive.cloudera.com... 151.101.0.167, 151.101.64.167, 151.101.128.167, ...
+Connecting to archive.cloudera.com|151.101.0.167|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 142039186 (135M) [application/x-redhat-package-manager]
+Saving to: “oracle-j2sdk1.7-1.7.0+update67-1.x86_64.rpm”
+100%[=====================================================================>] 142,039,186 68.8M/s   in 2.0s    
+2017-10-02 20:14:41 (68.8 MB/s) - “oracle-j2sdk1.7-1.7.0+update67-1.x86_64.rpm” saved [142039186/142039186]
+
+$ sudo mkdir /usr/java
+$ cd /usr/java
+$ sudo rpm -ivh /home/andres_wagner/oracle-j2sdk1.7-1.7.0+update67-1.x86_64.rpm 
+
+warning: /home/andres_wagner/oracle-j2sdk1.7-1.7.0+update67-1.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 
+e8f86acd: NOKEY
+Preparing...                ########################################### [100%]
+   1:oracle-j2sdk1.7        ########################################### [100%]
+   
+# Edit the system PATH file /etc/profile and add the following system variables to your system path
+$ sudo nano /etc/profile
+  JAVA_HOME=/usr/java/jdk1.7.0_67-cloudera 
+  JRE_HOME=/usr/java/jdk1.7.0_67-cloudera 
+  PATH=$PATH:$JRE_HOME/bin:$JAVA_HOME/bin
+  export JAVA_HOME
+  export JRE_HOME
+  export PATH
+
+##### Inform where your Oracle Java JDK/JRE is located. 
+$ sudo update-alternatives --install "/usr/bin/java" "java" "/usr/local/java/jdk1.7.0_67/bin/java" 1
+$ sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/local/java/jdk1.7.0_67/bin/javac" 1
+$ sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/local/java/jdk1.7.0_67/bin/javaws" 1
+
+##### Inform that Oracle Java JDK/JRE must be the default Java.
+$ sudo update-alternatives --set java /usr/java/jdk1.7.0_67-cloudera/bin/java   
+$ sudo update-alternatives --set javac /usr/java/jdk1.7.0_67-cloudera/bin/javac 
+$ sudo update-alternatives --set javaws /usr/java/jdk1.7.0_67-cloudera/bin/javaws
+
+##### Reload your system wide PATH /etc/profile by typing the following command:
+$ source /etc/profile
+
+$ java -version
