@@ -213,6 +213,7 @@ $ ntpq -p
 ## <center> MySQL/MariaDB Installation Lab
 ### <center> Enable the repo to install MySQL 5.5
 $ yum --showduplicates list mysql
+
 Loaded plugins: fastestmirror, security
 Loading mirror speeds from cached hostfile
  * base: centos.mirrors.tds.net
@@ -226,10 +227,20 @@ Available Packages
 mysql.x86_64                                          5.1.73-8.el6_8                                           base
 
 
-$ sudo yum install mysql.x86_64 -y
-
-Installed:
-  mysql.x86_64 0:5.1.73-8.el6_8                                                                                    
+$ sudo yum install mysql mysql-server -y
+                                                                                  
 Complete!
 
+$ sudo service mysqld start
+
+$ service mysqld status
+
+mysqld (pid  708) is running...
+
 ###  <center> Download and copy the JDBC connector to all nodes.
+
+$ wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.44.zip -O m
+ysql_jdbc.zip
+
+sudo cp -pR mysql-connector-java-5.1.44 /usr/share/java/
+$unzip mysql_jdbc.zip 
