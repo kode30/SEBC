@@ -211,6 +211,25 @@ $ ntpq -p
     *metadata.google 71.79.79.71      2 u   92  128  377    0.331   -1.494   0.187
     
 ## <center> MySQL/MariaDB Installation Lab
-hh
+### <center> Enable the repo to install MySQL 5.5
+$ yum --showduplicates list mysql
+Loaded plugins: fastestmirror, security
+Loading mirror speeds from cached hostfile
+ * base: centos.mirrors.tds.net
+ * epel: mirror.steadfast.net
+ * extras: repos.dfw.quadranet.com
+ * updates: mirror.tzulo.com
+ * webtatic: us-east.repo.webtatic.com
+webtatic                                                                                    | 3.6 kB     00:00     
+webtatic/primary_db                                                                         | 208 kB     00:00     
+Available Packages
+mysql.x86_64                                          5.1.73-8.el6_8                                           base
 
 
+$ sudo yum install mysql.x86_64 -y
+
+Installed:
+  mysql.x86_64 0:5.1.73-8.el6_8                                                                                    
+Complete!
+
+###  <center> Download and copy the JDBC connector to all nodes.
