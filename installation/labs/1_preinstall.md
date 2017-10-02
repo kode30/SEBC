@@ -237,6 +237,48 @@ $ service mysqld status
 
 mysqld (pid  708) is running...
 
+### Use /usr/bin/mysql_secure_installation to:
+$ sudo /usr/bin/mysql_secure_installation
+
+NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MySQL
+      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
+In order to log into MySQL to secure it, we'll need the current
+password for the root user.  If you've just installed MySQL, and
+you haven't set the root password yet, the password will be blank,
+so you should just press enter here.
+Enter current password for root (enter for none): 
+
+#### Set password protection for the server
+Set root password? [Y/n] y
+New password: 
+Re-enter new password: 
+Password updated successfully!
+Reloading privilege tables..
+ ... Success!
+ 
+#### b. Revoke permissions for anonymous users
+ By default, a MySQL installation has an anonymous user, allowing anyone
+to log into MySQL without having to have a user account created for
+them.  This is intended only for testing, and to make the installation
+go a bit smoother.  You should remove them before moving into a
+production environment.
+
+Remove anonymous users? [Y/n] n
+
+#### c. Permit remote privileged login
+
+Normally, root should only be allowed to connect from 'localhost'.  This
+ensures that someone cannot guess at the root password from the network.
+
+Disallow root login remotely? [Y/n] n
+
+#### d. Remove test databases
+By default, MySQL comes with a database named 'test' that anyone can
+access.  This is also intended only for testing, and should be removed
+before moving into a production environment.
+
+Remove test database and access to it? [Y/n] n
+
 ###  <center> Download and copy the JDBC connector to all nodes.
 
 $ wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.44.zip -O m
