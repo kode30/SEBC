@@ -1,4 +1,18 @@
 ## Establish Your Cloudera Manager Repository Strategy
+Standard Cloudera repositories. For this method, ensure you have added the required repository information to your systems.
+### RHEL-compatible
+1. Save the appropriate Cloudera Manager repo file (cloudera-manager.repo) for your system.
+2. Copy the repo file to the /etc/yum.repos.d/ directory.
+
+$ sudo wget https://archive.cloudera.com/cm5/redhat/6/x86_64/cm/cloudera-manager.repo
+$ sudo nano cloudera-manager.repo 
+
+   [cloudera-manager]
+   # Packages for Cloudera Manager, Version 5, on RedHat or CentOS 6 x86_64
+   name=Cloudera Manager
+   baseurl=https://archive.cloudera.com/cm5/redhat/6/x86_64/cm/5.11/
+   gpgkey =https://archive.cloudera.com/cm5/redhat/6/x86_64/cm/RPM-GPG-KEY-cloudera
+   gpgcheck = 1
 
 ## Install a supported Oracle JDK on your first node
 
