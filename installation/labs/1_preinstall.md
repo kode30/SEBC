@@ -200,6 +200,7 @@ $ chkconfig --list ntpd
             ntpd            0:off   1:off   2:on    3:on    4:on    5:on    6:off
 
 $ ntpq -p
+
     remote           refid      st t when poll reach   delay   offset  jitter
     ==============================================================================
     *metadata.google 71.79.79.71      2 u   92  128  377    0.331   -1.494   0.187
