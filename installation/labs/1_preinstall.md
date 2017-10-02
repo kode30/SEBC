@@ -196,6 +196,7 @@ SELinux AVC Statistics:
 8. Show the ntpd service is running
 
 $ chkconfig --list ntpd
+
             ntpd            0:off   1:off   2:on    3:on    4:on    5:on    6:off
 
 $ ntpq -p
