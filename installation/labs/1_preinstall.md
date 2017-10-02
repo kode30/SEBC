@@ -52,13 +52,17 @@ Non-authoritative answer:
 11.0.128.10.in-addr.arpa        name = cdh-i1.c.safari-lab.internal.
 
 7. Show the nscd service is running
-$ sudo nscd -g 
+
+$ sudo nscd -g
+
 nscd: nscd not running!
 
 $ sudo service nscd start
+
 Starting nscd:                                             [  OK  ]
 
-$ sudo nscd -g 
+$ sudo nscd -g
+
 nscd configuration:
 
               0  server debug level
