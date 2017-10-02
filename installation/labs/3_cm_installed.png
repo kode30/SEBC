@@ -60,3 +60,6 @@ $ sudo update-alternatives --set javaws /usr/java/jdk1.7.0_67-cloudera/bin/javaw
 $ source /etc/profile
 
 $ java -version
+
+## Install the Cloudera Manager Server Packages
+$ sudo yum install cloudera-manager-daemons cloudera-manager-server
