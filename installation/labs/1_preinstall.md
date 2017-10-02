@@ -279,6 +279,19 @@ before moving into a production environment.
 
 Remove test database and access to it? [Y/n] n
 
+#### e. Refresh privileges in memory
+Reloading the privilege tables will ensure that all changes made so far
+will take effect immediately.
+
+Reload privilege tables now? [Y/n] y
+
+#### f. Refreshes the mysqld service
+
+$ sudo service mysqld restart
+Stopping mysqld:                                           [  OK  ]
+No such file or directory
+Starting mysqld:                                           [  OK  ]
+
 ###  <center> Download and copy the JDBC connector to all nodes.
 
 $ wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.44.zip -O m
