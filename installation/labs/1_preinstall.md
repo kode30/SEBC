@@ -1,3 +1,4 @@
+## <center> System Configuration Checks
 1. Check vm.swappiness on all your nodes
 $ cat /proc/sys/vm/swappiness
 60
@@ -208,3 +209,8 @@ $ ntpq -p
     remote           refid      st t when poll reach   delay   offset  jitter
     ==============================================================================
     *metadata.google 71.79.79.71      2 u   92  128  377    0.331   -1.494   0.187
+    
+## <center> MySQL/MariaDB Installation Lab
+hh
+
+
