@@ -375,19 +375,23 @@ $ sudo service mysqld start
     
 ###  <center> Installing the MySQL JDBC Driver
 
-$ wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.44.zip -O m
-ysql_jdbc.zip
+$ wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.44.zip 
 
-sudo cp -pR mysql-connector-java-5.1.44 /usr/share/java/
-$unzip mysql_jdbc.zip 
+$ sudo mkdir /usr/share/java/
+$ sudo cp -pR mysql-connector-java-5.1.44.zip /usr/share/java/
+
 
 $ cd /usr/share/java/
+$ sudo unzip mysql-connector-java-5.1.44.zip 
 $ ls
-build.xml  CHANGES  COPYING  mysql-connector-java-5.1.44-bin.jar  README  README.txt  src
 
-$ mv mysql-connector-java-5.1.44-bin.jar mysql-connector-java.jar
+mysql-connector-java-5.1.44  mysql-connector-java-5.1.44.zip
+
+$ sudo mv mysql-connector-java-5.1.44/mysql-connector-java-5.1.44-bin.jar mysql-
+connector-java.jar
+
 $ ls
-build.xml  CHANGES  COPYING  mysql-connector-java.jar  README  README.txt  src
+mysql-connector-java-5.1.44  mysql-connector-java-5.1.44.zip  mysql-connector-java.jar
 
 
 ## Creating Databases
