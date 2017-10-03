@@ -12,6 +12,8 @@ $ cat /proc/sys/vm/swappiness
 
 1
 
+$ sudo sysctl vm.swappiness=1
+
 2. mount attributes of your volume(s)
 lsblk
 
@@ -76,6 +78,7 @@ $ sudo nscd -g
 nscd: nscd not running!
 
 $ sudo yum install nscd
+$ sudo chkconfig --level 345 nscd on
 $ sudo service nscd start
 
 Starting nscd:                                             [  OK  ]
@@ -249,6 +252,7 @@ $ sudo yum install mysql mysql-server -y
                                                                                   
 Complete!
 
+$ sudo chkconfig --level 345 mysqld on
 $ sudo service mysqld start
 
 $ service mysqld status
