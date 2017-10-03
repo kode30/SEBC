@@ -1,26 +1,61 @@
-$ chmod 777 YARNtest.sh
-$ ./YARNtest.sh 
+#!/bin/sh
+# Confirm the path values given below correspond to your installation
 
-$ ./YARNtest.sh 
-Testing loop started on Tue Oct 3 20:45:38 UTC 2017
+MR=/opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce
+HADOOP=/opt/cloudera/parcels/CDH/bin
 
-real	0m35.161s
-user	0m4.910s
-sys	0m0.299s
+# Mark start of the loop
+echo Testing loop started on `date`
 
-real	1m49.655s
-user	0m7.200s
-sys	0m0.361s
-Deleted /user/andreswagner/results/tg-10GB-8-1-512
-Deleted /user/andreswagner/results/ts-10GB-8-1-512
+# Mapper containers
+for i in 4 8
+do
+   # Reducer containers
+   for j in 1 4
+   do
+      # Container memory
+      for k in 512 1024
+      do
+         # Set mapper JVM heap
+         MAP_MB=`echo "($k*0.8)/1" | bc`
 
-real	0m36.247s
-user	0m4.864s
-sys	0m0.287s
+         # Set reducer JVM heap
+         RED_MB=`echo "($k*0.8)/1" | bc`
 
-real	1m55.771s
-user	0m6.979s
-sys	0m0.327s
-Deleted /user/andreswagner/results/tg-10GB-8-1-1024
-Deleted /user/andreswagner/results/ts-10GB-8-1-1024
-Testing loop ended on Tue Oct 3 20:50:44 UTC 2017
+        echo Teragen maps=$i memory.mb=$k max.heap=$MAP_MB
+        time ${HADOOP}/hadoop jar ${MR}/hadoop-examples.jar teragen \
+                     -Dmapreduce.job.maps=$i \
+                     -Dmapreduce.map.memory.mb=$k \
+                     -Dmapreduce.map.java.opts.max.heap=$MAP_MB \
+                     51200000 /user/andreswagner/results/tg-10GB-${i}-${j}-${k} 1>tera_${i}_${j}_${k}.out 2>tera_${i}_${j}_${k}.err
+
+        echo Terasort maps=$i reduces=$j map.memory.mb=$k map.max.heap=$MAP_MB reduce.memory.mb=$k reduce.max.heap=$RED_MB
+       time ${HADOOP}/hadoop jar $MR/hadoop-examples.jar terasort \
+                     -Dmapreduce.job.maps=$i \
+                     -Dmapreduce.job.reduces=$j \
+                     -Dmapreduce.map.memory.mb=$k \
+                     -Dmapreduce.map.java.opts.max.heap=$MAP_MB \
+                     -Dmapreduce.reduce.memory.mb=$k \
+                     -Dmapreduce.reduce.java.opts.max.heap=$RED_MB \
+                      /user/andreswagner/results/tg-10GB-${i}-${j}-${k}  \
+                      /user/andreswagner/results/ts-10GB-${i}-${j}-${k} 1>>tera_${i}_${j}_${k}.out 2>>tera_${i}_${j}_${k}.err
+          
+        echo Terasort maps=$i reduces=$j map.memory.mb=$k map.max.heap=$MAP_MB reduce.memory.mb=$k reduce.max.heap=$RED_MB
+       time ${HADOOP}/hadoop jar $MR/hadoop-examples.jar terasort \
+                     -Dmapreduce.job.maps=$i \
+                     -Dmapreduce.job.reduces=$j \
+                     -Dmapreduce.map.memory.mb=$k \
+                     -Dmapreduce.map.java.opts.max.heap=$MAP_MB \
+                     -Dmapreduce.reduce.memory.mb=$k \
+                     -Dmapreduce.reduce.java.opts.max.heap=$RED_MB \
+                      /user/andreswagner/results/tg-10GB-${i}-${j}-${k}  \
+                      /user/andreswagner/results/ts-10GB-${i}-${j}-${k} 1>>tera_${i}_${j}_${k}.out 2>>tera_${i}_${j}_${k}.err
+
+        $HADOOP/hadoop fs -rm -r -skipTrash  /user/andreswagner/results/tg-10GB-${i}-${j}-${k}
+        $HADOOP/hadoop fs -rm -r -skipTrash  /user/andreswagner/results/ts-10GB-${i}-${j}-${k}
+      done
+   done
+done
+
+echo Testing loop ended on `date`
+
