@@ -91,3 +91,9 @@ io.sort.record.percent=0.138	The percentage of io.sort.mb dedicated to tracking 
 
 
 $ hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar terasort /user/andreswagner/teraInput3 /user/andreswagner/teraOutput3
+
+links de interés: 
+* http://blobseer.gforge.inria.fr/doku.php?id=tutorial:terabenchmark
+* http://www.nagazuka.nl/2013/06/running-hadoop-examples-on-cloudera.html
+* https://discuss.pivotal.io/hc/en-us/articles/200927666-Running-TeraSort-MapReduce-Benchmark
+
