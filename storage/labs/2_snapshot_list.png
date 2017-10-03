@@ -1,0 +1,25 @@
+List the commands and output for each step below in storage/labs/2_snapshot_test.md.
+
+Create a precious directory in HDFS; 
+
+$ hdfs dfs -mkdir /user/andreswagner/precious
+
+copy the ZIP course file into it.
+
+$ hdfs dfs -put SEBC-master-students.zip /user/andreswagner/precious/
+$ hdfs dfs -ls /user/andreswagner/precious/
+Found 1 items
+-rw-r--r--   3 andreswagner andreswagner     474831 2017-10-03 18:01 /user/andreswagner/precious/SEBC-master-students.zip
+
+Enable snapshots for precious
+
+Create a snapshot called sebc-hdfs-test
+
+Delete the directory
+
+Delete the ZIP file
+
+Restore the deleted file
+
+Capture the NameNode web UI screen that lists snapshots in storage/labs/2_snapshot_list.png
+
