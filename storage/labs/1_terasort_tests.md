@@ -90,7 +90,13 @@ io.sort.record.percent=0.138	The percentage of io.sort.mb dedicated to tracking 
 /Workloads/terasort.data	Path of file to write
 
 
-$ hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar terasort /user/andreswagner/teraInput3 /user/andreswagner/teraOutput3
+$ test hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar terasort /user/andreswagner/teraInput3 /user/andreswagner/teraOutput3
+
+INFO terasort.TeraSort: done
+
+real	4m38.259s
+user	0m7.850s
+sys	0m0.454s
 
 links de interés: 
 * http://blobseer.gforge.inria.fr/doku.php?id=tutorial:terabenchmark
