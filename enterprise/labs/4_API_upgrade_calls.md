@@ -100,3 +100,10 @@ $ curl -u admin:admin 'http://localhost:7180/api/v17/users'
 }
 ```
 * Report the database server in use by CM
+```
+$ curl -u admin:admin 'http://localhost:7180/api/v17/cm/scmDbInfo'
+{
+  "scmDbType" : "MYSQL",
+  "embeddedDbUsed" : false
+}
+
