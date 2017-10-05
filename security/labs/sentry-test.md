@@ -49,22 +49,48 @@ No rows selected (2.637 seconds)
 
 
 ```
-$ beeline
-Beeline version 1.1.0-cdh5.11.2 by Apache Hive
-beeline> !connect jdbc:hive2://cdh-srv4.c.safari-lab.internal:10000/default;principal=hive/cdh-srv4.c.safari-lab.internal@C.SAFARI-LAB.INTERNAL
-scan complete in 3ms
-Connecting to jdbc:hive2://cdh-srv4.c.safari-lab.internal:10000/default;principal=hive/cdh-srv4.c.safari-lab.internal@C.SAFARI-LAB.INTERNAL
-Connected to: Apache Hive (version 1.1.0-cdh5.11.2)
-Driver: Hive JDBC (version 1.1.0-cdh5.11.2)
-Transaction isolation: TRANSACTION_REPEATABLE_READ
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> CREATE ROLE sentry_admin;
+INFO  : Compiling command(queryId=hive_20171005200808_64750aeb-1155-448f-a0a1-03608c1d3afa): CREATE ROLE sentry_admin
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20171005200808_64750aeb-1155-448f-a0a1-03608c1d3afa); Time taken: 0.096 seconds
+INFO  : Executing command(queryId=hive_20171005200808_64750aeb-1155-448f-a0a1-03608c1d3afa): CREATE ROLE sentry_admin
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20171005200808_64750aeb-1155-448f-a0a1-03608c1d3afa); Time taken: 0.435 seconds
+INFO  : OK
+No rows affected (0.551 seconds)
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> GRANT ALL ON SERVER server1 TO ROLE sentry_admin;
+INFO  : Compiling command(queryId=hive_20171005200808_42afd560-7b91-46a2-9638-340428ecdcd8): GRANT ALL ON SERVER server1 TO ROLE sentry_admin
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20171005200808_42afd560-7b91-46a2-9638-340428ecdcd8); Time taken: 0.12 seconds
+INFO  : Executing command(queryId=hive_20171005200808_42afd560-7b91-46a2-9638-340428ecdcd8): GRANT ALL ON SERVER server1 TO ROLE sentry_admin
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20171005200808_42afd560-7b91-46a2-9638-340428ecdcd8); Time taken: 0.153 seconds
+INFO  : OK
+No rows affected (0.288 seconds)
+```
+```
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> GRANT ROLE sentry_admin TO GROUP andreswagner;
+INFO  : Compiling command(queryId=hive_20171005200909_19a223fa-e4be-49e0-8417-713dc8405ea9): GRANT ROLE sentry_admin TO GROUP andreswagner
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20171005200909_19a223fa-e4be-49e0-8417-713dc8405ea9); Time taken: 0.089 seconds
+INFO  : Executing command(queryId=hive_20171005200909_19a223fa-e4be-49e0-8417-713dc8405ea9): GRANT ROLE sentry_admin TO GROUP andreswagner
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20171005200909_19a223fa-e4be-49e0-8417-713dc8405ea9); Time taken: 0.081 seconds
+INFO  : OK
+No rows affected (0.187 seconds)
+```
+```
 0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> SHOW TABLES;
-INFO  : Compiling command(queryId=hive_20171005185555_8cba6bb2-8217-428b-b5bb-11138d86a999): SHOW TABLES
+INFO  : Compiling command(queryId=hive_20171005200909_e43d0b71-6213-49b1-ae5b-968aef0384fc): SHOW TABLES
 INFO  : Semantic Analysis Completed
 INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:tab_name, type:string, comment:from deserializer)], properties:null)
-INFO  : Completed compiling command(queryId=hive_20171005185555_8cba6bb2-8217-428b-b5bb-11138d86a999); Time taken: 0.049 seconds
-INFO  : Executing command(queryId=hive_20171005185555_8cba6bb2-8217-428b-b5bb-11138d86a999): SHOW TABLES
+INFO  : Completed compiling command(queryId=hive_20171005200909_e43d0b71-6213-49b1-ae5b-968aef0384fc); Time taken: 0.086 seconds
+INFO  : Executing command(queryId=hive_20171005200909_e43d0b71-6213-49b1-ae5b-968aef0384fc): SHOW TABLES
 INFO  : Starting task [Stage-0:DDL] in serial mode
-INFO  : Completed executing command(queryId=hive_20171005185555_8cba6bb2-8217-428b-b5bb-11138d86a999); Time taken: 0.05 seconds
+INFO  : Completed executing command(queryId=hive_20171005200909_e43d0b71-6213-49b1-ae5b-968aef0384fc); Time taken: 0.197 seconds
 INFO  : OK
 +------------+--+
 |  tab_name  |
@@ -74,9 +100,8 @@ INFO  : OK
 | sample_08  |
 | web_logs   |
 +------------+--+
-4 rows selected (0.376 seconds)
-0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> !quit
-Closing: 0: jdbc:hive2://cdh-srv4.c.safari-lab.internal:10000/default;principal=hive/cdh-srv4.c.safari-lab.internal@C.SAFARI-LAB.INTERNAL
+4 rows selected (0.361 seconds)
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> 
 ```
 
 Create additional test users
