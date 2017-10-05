@@ -59,3 +59,4 @@ Log in to the Cloudera Manager Admin Console. It can take several minutes for Cl
 The Upgrade Wizard displays.
 
 ![Image of Upgrade Wizard](cm_upgrade_wizard_1.png)
+![Image of Upgrade Wizard](cm_upgrade_wizard_2.png)
