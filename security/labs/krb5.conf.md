@@ -1,3 +1,4 @@
+```
 [logging]
  default = FILE:/var/log/krb5libs.log
  kdc = FILE:/var/log/krb5kdc.log
@@ -21,5 +22,6 @@
  }
 
 [domain_realm]
-   .example.com = C.SAFARI-LAB.INTERNAL
-   example.com = C.SAFARI-LAB.INTERNAL
+   .c.safari-lab.internal = C.SAFARI-LAB.INTERNAL
+   c.safari-lab.internal = C.SAFARI-LAB.INTERNAL
+``` 
