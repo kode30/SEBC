@@ -57,13 +57,15 @@ Command line
 
 parameters
 
-dfs.block.size=536870912	The size of blocks in Hadoop (here 512MB)
-mapred.map.tasks=32	The number of map tasks per job (size of mapper, each one will generate 512MB)
-mapred.reduce.tasks=16	The number of reduce tasks per job
-mapred.map.tasks.speculative.execution=true	Multiple instances of some map tasks may be executed in parallel
-mapred.compress.map.output=true	Should the outputs of the maps be compressed before being sent across the network (uses SequenceFile compression)
-1000000	Size of generated files in 100-byte chuncks
-/Workloads/teragen.data	Path of file to write
+parameter | description
+------------ | -------------
+dfs.block.size=536870912 | The size of blocks in Hadoop (here 512MB)
+mapred.map.tasks=32 | The number of map tasks per job (size of mapper, each one will generate 512MB)
+mapred.reduce.tasks=16 | The number of reduce tasks per job
+mapred.map.tasks.speculative.execution=true | Multiple instances of some map tasks may be executed in parallel
+mapred.compress.map.output=true | Should the outputs of the maps be compressed before being sent across the network (uses SequenceFile compression)
+1000000 | Size of generated files in 100-byte chuncks
+/Workloads/teragen.data | Path of file to write
 
 ```
 $ hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teragen -Dmapreduce.job.maps=5 -Ddfs.block.size=32000000 100000000 /user/andreswagner/teraInput2
@@ -81,17 +83,18 @@ Command line
     -Dio.sort.record.percent=0.138 \
     /Workloads/teragen.data \
     /Workloads/terasort.data
-parameters
 ```
-dfs.block.size=536870912	The size of blocks in Hadoop (here 512MB)
-mapred.map.tasks=32	The number of map tasks per job (size of mapper, each one will generate 512MB)
-mapred.reduce.tasks=16	The number of reduce tasks per job
-io.file.buffer.size=32768	The size of buffer for use in sequence files; it determines how much data is buffered during read and write operations
-io.sort.factor=48	The number of streams to merge at once while sorting files; this determines the number of open file handles
-io.sort.record.percent=0.138	The percentage of io.sort.mb dedicated to tracking record boundaries
-1000000	Size of generated file multiplied in 100-byte chuncks
-/Workloads/teragen.data	Path of file to read
-/Workloads/terasort.data	Path of file to write
+parameter | description
+------------ | -------------
+dfs.block.size=536870912 | The size of blocks in Hadoop (here 512MB)
+mapred.map.tasks=32 | The number of map tasks per job (size of mapper, each one will generate 512MB)
+mapred.reduce.tasks=16 | The number of reduce tasks per job
+io.file.buffer.size=32768 | The size of buffer for use in sequence files; it determines how much data is buffered during read and write operations
+io.sort.factor=48 | The number of streams to merge at once while sorting files; this determines the number of open file handles
+io.sort.record.percent=0.138 | The percentage of io.sort.mb dedicated to tracking record boundaries
+1000000 | Size of generated file multiplied in 100-byte chuncks
+/Workloads/teragen.data | Path of file to read
+/Workloads/terasort.data | Path of file to write
 
 ```
 $ test hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar terasort /user/andreswagner/teraInput3 /user/andreswagner/teraOutput3
