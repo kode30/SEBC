@@ -10,9 +10,34 @@
 * Copy the transcript of this section to security/labs/sentry-test.md
 
 ```
-$ beeline -u "jdbc:hiv2://cdh-srv4.c.safari-lab.internal:10013/default;principal=hive/cdh-srv4.c.safari-lab.internal@C.SAFARI-LAB.INTERNAL
-> SHOW TABLES;
-> 
+$ beeline
+Beeline version 1.1.0-cdh5.11.2 by Apache Hive
+```
+
+```
+beeline> !connect jdbc:hive2://cdh-srv4.c.safari-lab.internal:10000/default;principal=hive/cdh-srv4.c.safari-lab.internal@C.SAFARI-LAB.INTERNAL
+scan complete in 2ms
+Connecting to jdbc:hive2://cdh-srv4.c.safari-lab.internal:10000/default;principal=hive/cdh-srv4.c.safari-lab.internal@C.SAFARI-LAB.INTERNAL
+Connected to: Apache Hive (version 1.1.0-cdh5.11.2)
+Driver: Hive JDBC (version 1.1.0-cdh5.11.2)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+```
+```
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> SHOW TABLES;
+INFO  : Compiling command(queryId=hive_20171005200606_a854967b-8a42-4247-b68e-bae6ae863d18): SHOW TABLES
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:tab_name, type:string, comment:from deserializer)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20171005200606_a854967b-8a42-4247-b68e-bae6ae863d18); Time taken: 0.77 seconds
+INFO  : Executing command(queryId=hive_20171005200606_a854967b-8a42-4247-b68e-bae6ae863d18): SHOW TABLES
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20171005200606_a854967b-8a42-4247-b68e-bae6ae863d18); Time taken: 0.436 seconds
+INFO  : OK
++-----------+--+
+| tab_name  |
++-----------+--+
++-----------+--+
+No rows selected (2.637 seconds)
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> 
 ```
 ### Create a Sentry role with full authorization 
 * In `beeline`:
