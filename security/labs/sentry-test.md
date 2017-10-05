@@ -110,11 +110,12 @@ INFO  : OK
 ### Create additional test users
 
 Add new users to all cluster nodes
+```
 $ sudo groupadd selector
 $ sudo groupadd inserters
 $ sudo useradd -u 1100 -g selector george
 $ sudo useradd -u 1200 -g inserters ferdinand
-
+```
 
 add_principal george and ferdinand
 ```
