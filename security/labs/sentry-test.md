@@ -107,7 +107,7 @@ INFO  : OK
 0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> 
 ```
 
-Create additional test users
+### Create additional test users
 
 Add new users to all cluster nodes
 $ sudo groupadd selector
@@ -118,7 +118,6 @@ $ sudo useradd -u 1200 -g inserters ferdinand
 
 add_principal george and ferdinand
 ```
-add_principal george
 $ sudo kadmin.local
 Authenticating as principal cloudera-scm/admin@C.SAFARI-LAB.INTERNAL with password.
 kadmin.local:  add_principal george
@@ -156,4 +155,35 @@ Transaction isolation: TRANSACTION_REPEATABLE_READ
 ```
 
 CREATE ROLE reads;
+
+```
+
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> CREATE ROLE reads;
+INFO  : Compiling command(queryId=hive_20171005201313_78f4749d-4d0b-4716-944b-4e202d3dbf98): CREATE ROLE reads
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20171005201313_78f4749d-4d0b-4716-944b-4e202d3dbf98); Time taken: 0.101 seconds
+INFO  : Executing command(queryId=hive_20171005201313_78f4749d-4d0b-4716-944b-4e202d3dbf98): CREATE ROLE reads
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20171005201313_78f4749d-4d0b-4716-944b-4e202d3dbf98); Time taken: 0.034 seconds
+INFO  : OK
+No rows affected (0.154 seconds)
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> 
+```
+
 CREATE ROLE writes;
+```
+ 
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> CREATE ROLE writes;
+INFO  : Compiling command(queryId=hive_20171005201313_326cfb7a-dde1-4a37-951c-4c46daffc4bf): CREATE ROLE writes
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20171005201313_326cfb7a-dde1-4a37-951c-4c46daffc4bf); Time taken: 0.081 seconds
+INFO  : Executing command(queryId=hive_20171005201313_326cfb7a-dde1-4a37-951c-4c46daffc4bf): CREATE ROLE writes
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20171005201313_326cfb7a-dde1-4a37-951c-4c46daffc4bf); Time taken: 0.033 seconds
+INFO  : OK
+No rows affected (0.13 seconds)
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> 
+```
+INFO  : Completed executing command(queryId=hive_20171005201313_78f4749d-4d0b-4716-944b-4e202d3dbf98); Time taken: 0.034 seconds
