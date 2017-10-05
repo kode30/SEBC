@@ -3,7 +3,7 @@ Standard Cloudera repositories. For this method, ensure you have added the requi
 ### RHEL-compatible
 1. Save the appropriate Cloudera Manager repo file (cloudera-manager.repo) for your system.
 2. Copy the repo file to the /etc/yum.repos.d/ directory.
-
+``` 
 $ sudo wget https://archive.cloudera.com/cm5/redhat/6/x86_64/cm/cloudera-manager.repo
 $ sudo nano cloudera-manager.repo 
 
@@ -13,9 +13,10 @@ $ sudo nano cloudera-manager.repo
    baseurl=https://archive.cloudera.com/cm5/redhat/6/x86_64/cm/5.11/
    gpgkey =https://archive.cloudera.com/cm5/redhat/6/x86_64/cm/RPM-GPG-KEY-cloudera
    gpgcheck = 1
+``` 
 
 ## Install a supported Oracle JDK on your first node
-
+``` 
 $ wget https://archive.cloudera.com/cm5/redhat/6/x86_64/cm/5.11/RPMS/x86_64/oracle-j2sd
 k1.7-1.7.0+update67-1.x86_64.rpm
 --2017-10-02 20:14:39--  https://archive.cloudera.com/cm5/redhat/6/x86_64/cm/5.11/RPMS/x86_64/oracle-j2sdk1.7-1
@@ -36,8 +37,10 @@ warning: /home/andres_wagner/oracle-j2sdk1.7-1.7.0+update67-1.x86_64.rpm: Header
 e8f86acd: NOKEY
 Preparing...                ########################################### [100%]
    1:oracle-j2sdk1.7        ########################################### [100%]
-   
+``` 
+
 # Edit the system PATH file /etc/profile and add the following system variables to your system path
+``` 
 $ sudo nano /etc/profile
   JAVA_HOME=/usr/java/jdk1.7.0_67-cloudera 
   JRE_HOME=/usr/java/jdk1.7.0_67-cloudera 
@@ -45,23 +48,31 @@ $ sudo nano /etc/profile
   export JAVA_HOME
   export JRE_HOME
   export PATH
+``` 
 
 ##### Inform where your Oracle Java JDK/JRE is located. 
+``` 
 $ sudo update-alternatives --install "/usr/bin/java" "java" "/usr/local/java/jdk1.7.0_67/bin/java" 1
 $ sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/local/java/jdk1.7.0_67/bin/javac" 1
 $ sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/local/java/jdk1.7.0_67/bin/javaws" 1
+``` 
 
 ##### Inform that Oracle Java JDK/JRE must be the default Java.
+``` 
 $ sudo update-alternatives --set java /usr/java/jdk1.7.0_67-cloudera/bin/java   
 $ sudo update-alternatives --set javac /usr/java/jdk1.7.0_67-cloudera/bin/javac 
 $ sudo update-alternatives --set javaws /usr/java/jdk1.7.0_67-cloudera/bin/javaws
+``` 
 
 ##### Reload your system wide PATH /etc/profile by typing the following command:
+``` 
 $ source /etc/profile
 
 $ java -version
+``` 
 
 ## Install the Cloudera Manager Server Packages
+``` 
    $ sudo yum install cloudera-manager-daemons cloudera-manager-server
 
      Installing : cloudera-manager-daemons-5.11.2-1.cm5112.p0.6.el6.x86_64                                       1/2 
@@ -84,3 +95,4 @@ hema/../lib/* com.cloudera.enterprise.dbutil.DbCommandExecutor /etc/cloudera-scm
 All done, your SCM database is configured correctly!
 
 $ sudo service cloudera-scm-server start
+``` 
