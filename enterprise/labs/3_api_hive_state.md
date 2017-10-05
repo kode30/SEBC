@@ -1,3 +1,4 @@
+Stop Hive service.
 ```
 $ curl -X POST -u admin:admin 'http://localhost:7180/api/v1/clusters/andreswagner/services/hive/commands/stop'
 {
@@ -9,7 +10,9 @@ $ curl -X POST -u admin:admin 'http://localhost:7180/api/v1/clusters/andreswagne
     "clusterName" : "cluster",
     "serviceName" : "hive"
   }
-  
+```
+Start Hive service.
+```
 $ curl -X POST -u admin:admin 'http://localhost:7180/api/v1/clusters/andreswagner/services/hive/commands/start'
 {
   "id" : 1061,
@@ -19,8 +22,10 @@ $ curl -X POST -u admin:admin 'http://localhost:7180/api/v1/clusters/andreswagne
   "serviceRef" : {
     "clusterName" : "cluster",
     "serviceName" : "hive"
-  }
-
+  }
+```
+Check the current state of  Hive service
+```
 $ curl -u admin:admin 'http://localhost:7180/api/v1/clusters/andreswagner/services/hive'
 {
   "name" : "hive",
