@@ -186,4 +186,97 @@ INFO  : OK
 No rows affected (0.13 seconds)
 0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> 
 ```
-INFO  : Completed executing command(queryId=hive_20171005201313_78f4749d-4d0b-4716-944b-4e202d3dbf98); Time taken: 0.034 seconds
+Grant read privilege for all tables to reads
+
+GRANT SELECT ON DATABASE default TO ROLE reads;
+```
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> GRANT SELECT ON DATABASE default TO ROLE reads;
+INFO  : Compiling command(queryId=hive_20171005201515_6f0952c1-0fef-44c2-b358-bff5f59ed661): GRANT SELECT ON DATABASE default TO ROLE reads
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20171005201515_6f0952c1-0fef-44c2-b358-bff5f59ed661); Time taken: 0.078 seconds
+INFO  : Executing command(queryId=hive_20171005201515_6f0952c1-0fef-44c2-b358-bff5f59ed661): GRANT SELECT ON DATABASE default TO ROLE reads
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20171005201515_6f0952c1-0fef-44c2-b358-bff5f59ed661); Time taken: 0.033 seconds
+INFO  : OK
+No rows affected (0.131 seconds)
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> 
+
+```
+
+GRANT ROLE reads TO GROUP selector;
+```
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> GRANT ROLE reads TO GROUP selector;
+INFO  : Compiling command(queryId=hive_20171005201717_9f5c8263-9fcc-45de-b4fc-76cc762988d5): GRANT ROLE reads TO GROUP selector
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20171005201717_9f5c8263-9fcc-45de-b4fc-76cc762988d5); Time taken: 0.085 seconds
+INFO  : Executing command(queryId=hive_20171005201717_9f5c8263-9fcc-45de-b4fc-76cc762988d5): GRANT ROLE reads TO GROUP selector
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20171005201717_9f5c8263-9fcc-45de-b4fc-76cc762988d5); Time taken: 0.038 seconds
+INFO  : OK
+No rows affected (0.143 seconds)
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> 
+```
+Grant read privilege for default.sample07 only to 'writes':
+
+REVOKE ALL ON DATABASE default FROM ROLE writes;
+```
+
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> REVOKE ALL ON DATABASE default FROM ROLE writes;
+INFO  : Compiling command(queryId=hive_20171005201818_392f9a02-b750-4353-8a60-c48012603feb): REVOKE ALL ON DATABASE default FROM ROLE writes
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20171005201818_392f9a02-b750-4353-8a60-c48012603feb); Time taken: 0.08 seconds
+INFO  : Executing command(queryId=hive_20171005201818_392f9a02-b750-4353-8a60-c48012603feb): REVOKE ALL ON DATABASE default FROM ROLE writes
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20171005201818_392f9a02-b750-4353-8a60-c48012603feb); Time taken: 0.134 seconds
+INFO  : OK
+No rows affected (0.23 seconds)
+
+```
+GRANT SELECT ON default.sample_07 TO ROLE writes;
+```
+
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> GRANT SELECT ON default.sample_07 TO ROLE writes;
+INFO  : Compiling command(queryId=hive_20171005201818_f40c7b9a-17c0-4510-9e1d-77256adfcdf5): GRANT SELECT ON default.sample_07 TO ROLE writes
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20171005201818_f40c7b9a-17c0-4510-9e1d-77256adfcdf5); Time taken: 0.093 seconds
+INFO  : Executing command(queryId=hive_20171005201818_f40c7b9a-17c0-4510-9e1d-77256adfcdf5): GRANT SELECT ON default.sample_07 TO ROLE writes
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20171005201818_f40c7b9a-17c0-4510-9e1d-77256adfcdf5); Time taken: 0.047 seconds
+INFO  : OK
+No rows affected (0.157 seconds)
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> 
+```
+GRANT ROLE writes TO GROUP inserters;
+```
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> GRANT ROLE writes TO GROUP inserters;
+INFO  : Compiling command(queryId=hive_20171005201818_b74c0865-8357-4c6b-acb9-337a4170ba54): GRANT ROLE writes TO GROUP inserters
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=hive_20171005201818_b74c0865-8357-4c6b-acb9-337a4170ba54); Time taken: 0.082 seconds
+INFO  : Executing command(queryId=hive_20171005201818_b74c0865-8357-4c6b-acb9-337a4170ba54): GRANT ROLE writes TO GROUP inserters
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20171005201818_b74c0865-8357-4c6b-acb9-337a4170ba54); Time taken: 0.031 seconds
+INFO  : OK
+No rows affected (0.133 seconds)
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> 
+```
+
+```
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> !quit
+Closing: 0: jdbc:hive2://cdh-srv4.c.safari-lab.internal:10000/default;principal=hive/cdh-srv4.c.safari-lab.internal@C.SAFARI-LAB.INTERNAL
+```
+### kinit as george, then login to beeline
+
+kinit as george, login to beeline, and use SHOW TABLES;
+george should be able to see all tables
+
+
+
+Repeat the process as ferdinand
+ferdinand should see sample_07
+
+Add the transcripts of these sessions to security/labs/sentry-test.md
