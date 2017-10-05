@@ -1,4 +1,6 @@
-# Upgrade to the latest C5.9 release
+# Upgrade Cloudera Manager
+
+## Upgrade to the latest C5.9 release
 
 Back up the following directories on the Cloudera Manager server host:
 /etc/cloudera-scm-server
@@ -62,3 +64,9 @@ The Upgrade Wizard displays.
 
 ![Image of Upgrade Wizard](cm_upgrade_wizard_1.png)
 ![Image of Upgrade Wizard](cm_upgrade_wizard_2.png)
+
+## Use the API on the command line to:
+* Report the latest available version of the API
+* Report the CM version
+* List all CM users
+* Report the database server in use by CM
