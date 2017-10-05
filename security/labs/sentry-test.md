@@ -273,11 +273,84 @@ Closing: 0: jdbc:hive2://cdh-srv4.c.safari-lab.internal:10000/default;principal=
 ### kinit as george, then login to beeline
 
 kinit as george, login to beeline, and use SHOW TABLES;
+
 george should be able to see all tables
 
+```
+$ beeline
+Beeline version 1.1.0-cdh5.11.2 by Apache Hive
+beeline> !connect jdbc:hive2://cdh-srv4.c.safari-lab.internal:10000/default;principal=hive/cdh-srv4.c.safari-lab.internal@C.SAFARI-LAB.INTERNAL
+scan complete in 2ms
+Connecting to jdbc:hive2://cdh-srv4.c.safari-lab.internal:10000/default;principal=hive/cdh-srv4.c.safari-lab.internal@C.SAFARI-LAB.INTERNAL
+Connected to: Apache Hive (version 1.1.0-cdh5.11.2)
+Driver: Hive JDBC (version 1.1.0-cdh5.11.2)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> show tables;
+INFO  : Compiling command(queryId=hive_20171005204949_a634051d-2326-436e-8432-7015d7a09e2f): show tables
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:tab_name, type:string, comment:from deserializer)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20171005204949_a634051d-2326-436e-8432-7015d7a09e2f); Time taken: 0.094 seconds
+INFO  : Executing command(queryId=hive_20171005204949_a634051d-2326-436e-8432-7015d7a09e2f): show tables
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20171005204949_a634051d-2326-436e-8432-7015d7a09e2f); Time taken: 0.166 seconds
+INFO  : OK
++------------+--+
+|  tab_name  |
++------------+--+
+| customers  |
+| sample_07  |
+| sample_08  |
+| web_logs   |
++------------+--+
+4 rows selected (0.388 seconds)
+```
+```
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> !quit
+``` 
+
+Repeat the process as ferdinand, ferdinand should see sample_07
+```
+$ kinit ferdinand
+Password for ferdinand@C.SAFARI-LAB.INTERNAL: 
+[andreswagner@cdh-srv1 ~]$ beeline
+Beeline version 1.1.0-cdh5.11.2 by Apache Hive
+```
+
+```
+
+beeline> !connect jdbc:hive2://cdh-srv4.c.safari-lab.internal:10000/default;principal=hive/cdh-srv4.c.safari-lab.internal@C.SAFARI-LAB.INTERNAL;
+scan complete in 3ms
+Connecting to jdbc:hive2://cdh-srv4.c.safari-lab.internal:10000/default;principal=hive/cdh-srv4.c.safari-lab.internal@C.SAFARI-LAB.INTERNAL;
+Connected to: Apache Hive (version 1.1.0-cdh5.11.2)
+Driver: Hive JDBC (version 1.1.0-cdh5.11.2)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+```
+
+```
+
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> show tables;
+INFO  : Compiling command(queryId=hive_20171005205353_721c78e6-7077-4da4-b09d-de07eca2a43f): show tables
+INFO  : Semantic Analysis Completed
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:tab_name, type:string, comment:from deserializer)], properties:null)
+INFO  : Completed compiling command(queryId=hive_20171005205353_721c78e6-7077-4da4-b09d-de07eca2a43f); Time taken: 0.091 seconds
+INFO  : Executing command(queryId=hive_20171005205353_721c78e6-7077-4da4-b09d-de07eca2a43f): show tables
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=hive_20171005205353_721c78e6-7077-4da4-b09d-de07eca2a43f); Time taken: 0.168 seconds
+INFO  : OK
++------------+--+
+|  tab_name  |
++------------+--+
+| sample_07  |
++------------+--+
+1 row selected (0.364 seconds)
+```
+
+```
+0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> !quit
+```
 
 
-Repeat the process as ferdinand
-ferdinand should see sample_07
+
+
 
 Add the transcripts of these sessions to security/labs/sentry-test.md
