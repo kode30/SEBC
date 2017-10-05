@@ -1,3 +1,5 @@
+# Upgrade to the latest C5.9 release
+
 Back up the following directories on the Cloudera Manager server host:
 /etc/cloudera-scm-server
 /etc/cloudera-scm-agent
