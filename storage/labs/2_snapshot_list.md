@@ -71,7 +71,7 @@ Found 1 items
 ```
 
 Capture the NameNode web UI screen that lists snapshots in storage/labs/2_snapshot_list.png
-![NameNode web UI](2_snapshot_list.png)
+![Image of NameNode web UI](2_snapshot_list.png)
 
 Links de interés:
 * http://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-hdfs/HdfsSnapshots.html
