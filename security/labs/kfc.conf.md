@@ -1,3 +1,4 @@
+```
 [realms]
   C.SAFARI-LAB.INTERNAL = {
   #master_key_type = aes256-cts
@@ -8,3 +9,4 @@
   max_life = 1d
   max_renewable_life = 7d
  }
+```
