@@ -5,6 +5,8 @@ Standard Cloudera repositories. For this method, ensure you have added the requi
 2. Copy the repo file to the /etc/yum.repos.d/ directory.
 ``` 
 $ sudo wget https://archive.cloudera.com/cm5/redhat/6/x86_64/cm/cloudera-manager.repo
+``` 
+``` 
 $ sudo nano cloudera-manager.repo 
 
    [cloudera-manager]
@@ -28,7 +30,9 @@ Length: 142039186 (135M) [application/x-redhat-package-manager]
 Saving to: “oracle-j2sdk1.7-1.7.0+update67-1.x86_64.rpm”
 100%[=====================================================================>] 142,039,186 68.8M/s   in 2.0s    
 2017-10-02 20:14:41 (68.8 MB/s) - “oracle-j2sdk1.7-1.7.0+update67-1.x86_64.rpm” saved [142039186/142039186]
+``` 
 
+``` 
 $ sudo mkdir /usr/java
 $ cd /usr/java
 $ sudo rpm -ivh /home/andres_wagner/oracle-j2sdk1.7-1.7.0+update67-1.x86_64.rpm 
@@ -83,7 +87,9 @@ $ java -version
      cloudera-manager-daemons.x86_64 0:5.11.2-1.cm5112.p0.6.el6                                                      
      cloudera-manager-server.x86_64 0:5.11.2-1.cm5112.p0.6.el6                                                       
    Complete!
+``` 
 
+``` 
 $ sudo /usr/share/cmf/schema/scm_prepare_database.sh --user root -pcloudera mysql cloudera_manager cloudera_manager cloudera
 
 JAVA_HOME=/usr/java/jdk1.7.0_67-cloudera
