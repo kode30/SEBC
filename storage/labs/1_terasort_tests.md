@@ -1,9 +1,9 @@
-HDFS Lab: Test HDFS throughput
+# HDFS Lab: Test HDFS throughput
 
 Create an end-user Linux account named with your GitHub handle
 Make sure this Linux account is added to all cluster nodes
 
-Create an HDFS directory under /user
+## Create an HDFS directory under /user
 ```
 $ hdfs dfs -ls /
 Found 2 items
@@ -35,14 +35,14 @@ drwxrwxr-x   - hue          hue                   0 2017-10-03 14:16 /user/hue
 drwxrwxr-x   - oozie        oozie                 0 2017-10-03 14:16 /user/oozie
 ```
 
-Create a 10 GB file using teragen
-Set the number of mappers to four
-Limit the block size to 32 MB
-Land the output in your user's home directory
-Use the time command to report the job's duration
+## Create a 10 GB file using teragen
 
-Teragen
-Command line
+* Set the number of mappers to four
+* Limit the block size to 32 MB
+* Land the output in your user's home directory
+* Use the time command to report the job's duration
+
+### Teragen Command line
 
 ```
 ./hadoop jar ../hadoop-examples-1.2.1.jar teragen \
@@ -54,8 +54,6 @@ Command line
     1000000 \
     /Workloads/teragen.data
 ```
-
-parameters
 
 parameter | description
 ------------ | -------------
@@ -71,8 +69,7 @@ mapred.compress.map.output=true | Should the outputs of the maps be compressed b
 $ hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teragen -Dmapreduce.job.maps=5 -Ddfs.block.size=32000000 100000000 /user/andreswagner/teraInput2
 ```
 
-Terasort
-Command line
+### Terasort Command line
 ```
 ./hadoop jar ../hadoop-examples-1.2.1.jar terasort \
     -Ddfs.block.size=536870912 \
