@@ -1,20 +1,20 @@
 ## <center> System Configuration Checks
 1. Check vm.swappiness on all your nodes
+```
 $ cat /proc/sys/vm/swappiness
-
 60
 
 $sudo nano /proc/sys/vm/swappiness
-
 1
 
 $ cat /proc/sys/vm/swappiness
-
 1
 
 $ sudo sysctl vm.swappiness=1
+``` 
 
 2. mount attributes of your volume(s)
+``` 
 lsblk
 
 NAME   MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
@@ -22,9 +22,10 @@ sdc      8:32   0  80G  0 disk /mnt/data_log
 sdb      8:16   0  80G  0 disk /mnt/data_cloudera
 sda      8:0    0  80G  0 disk 
 └─sda1   8:1    0  80G  0 part /
+``` 
 
 3. ext-based volumes, list the reserve space setting
-
+``` 
 $ df -h
 
 Filesystem      Size  Used Avail Use% Mounted on
@@ -32,22 +33,26 @@ Filesystem      Size  Used Avail Use% Mounted on
 tmpfs            15G     0   15G   0% /dev/shm
 /dev/sdb         79G   56M   75G   1% /mnt/data_cloudera
 /dev/sdc         79G   57M   75G   1% /mnt/data_log
+``` 
 
 4. Disable transparent hugepage support
+``` 
 sudo nano /etc/rc.local
 echo never > /sys/kernel/mm/transparent_hugepage/defrag
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
+``` 
 
 5. List your network interface configuration
+``` 
 $ ip link show
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN 
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1460 qdisc mq state UP qlen 1000
     link/ether 42:01:0a:80:00:0b brd ff:ff:ff:ff:ff:ff
-
+```
 
 6. Show that forward and reverse host lookups are correctly resolved
-
+``` 
 $ hostname -f
 cdh-i1.c.safari-lab.internal
 
@@ -70,9 +75,10 @@ Server:         169.254.169.254
 Address:        169.254.169.254#53
 Non-authoritative answer:
 11.0.128.10.in-addr.arpa        name = cdh-i1.c.safari-lab.internal.
+``` 
 
 7. Show the nscd service is running
-
+``` 
 $ sudo nscd -g
 
 nscd: nscd not running!
@@ -218,9 +224,10 @@ SELinux AVC Statistics:
               1  CAV hits
               2  CAV probes
               2  CAV misses
-              
-8. Show the ntpd service is running
+``` 
 
+8. Show the ntpd service is running
+``` 
 $ chkconfig --list ntpd
 
     ntpd            0:off   1:off   2:on    3:on    4:on    5:on    6:off
@@ -231,8 +238,11 @@ $ ntpq -p
     ==============================================================================
     *metadata.google 71.79.79.71      2 u   92  128  377    0.331   -1.494   0.187
     
+``` 
+
 ## <center> MySQL/MariaDB Installation Lab
 ### <center> Enable the repo to install MySQL 5.5
+``` 
 $ yum --showduplicates list mysql
 
 Loaded plugins: fastestmirror, security
@@ -258,8 +268,10 @@ $ sudo service mysqld start
 $ service mysqld status
 
 mysqld (pid  708) is running...
+``` 
 
 ### Use /usr/bin/mysql_secure_installation to:
+``` 
 $ sudo /usr/bin/mysql_secure_installation
 
 NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MySQL
@@ -269,16 +281,20 @@ password for the root user.  If you've just installed MySQL, and
 you haven't set the root password yet, the password will be blank,
 so you should just press enter here.
 Enter current password for root (enter for none): 
+``` 
 
 #### Set password protection for the server
+``` 
 Set root password? [Y/n] y
 New password: 
 Re-enter new password: 
 Password updated successfully!
 Reloading privilege tables..
  ... Success!
- 
+``` 
+
 #### b. Revoke permissions for anonymous users
+``` 
  By default, a MySQL installation has an anonymous user, allowing anyone
 to log into MySQL without having to have a user account created for
 them.  This is intended only for testing, and to make the installation
@@ -286,37 +302,43 @@ go a bit smoother.  You should remove them before moving into a
 production environment.
 
 Remove anonymous users? [Y/n] n
+``` 
 
 #### c. Permit remote privileged login
-
+``` 
 Normally, root should only be allowed to connect from 'localhost'.  This
 ensures that someone cannot guess at the root password from the network.
 
 Disallow root login remotely? [Y/n] n
+``` 
 
 #### d. Remove test databases
+``` 
 By default, MySQL comes with a database named 'test' that anyone can
 access.  This is also intended only for testing, and should be removed
 before moving into a production environment.
 
 Remove test database and access to it? [Y/n] n
+``` 
 
 #### e. Refresh privileges in memory
+``` 
 Reloading the privilege tables will ensure that all changes made so far
 will take effect immediately.
 
 Reload privilege tables now? [Y/n] y
+``` 
 
 #### f. Refreshes the mysqld service
-
+``` 
 $ sudo service mysqld restart
 Stopping mysqld:                                           [  OK  ]
 No such file or directory
 Starting mysqld:                                           [  OK  ]
-
+``` 
 
 Move old InnoDB log files /var/lib/mysql/ib_logfile0 and /var/lib/mysql/ib_logfile1 out of /var/lib/mysql/ to a backup location.
-
+``` 
 $ sudo service mysqld stop
 
 $ sudo nano /etc/my.cnf
@@ -367,18 +389,20 @@ $ sudo nano /etc/my.cnf
 
 $ sudo mv /var/lib/mysql/ib_logfile0 /var/lib/mysql.bak
 $ sudo mv /var/lib/mysql/ib_logfile1 /var/lib/mysql_ib_logfile1.bak
-
+``` 
 
 ### Ensure the MySQL server starts at boot.
+``` 
 $ sudo /sbin/chkconfig mysqld on 
 $ sudo /sbin/chkconfig --list mysqld
     ysqld          0:off   1:off   2:on    3:on    4:on    5:on    6:off
 
 $ sudo service mysqld start
     starting mysqld:                                           [  OK  ]
-    
-###  <center> Installing the MySQL JDBC Driver
+``` 
 
+###  <center> Installing the MySQL JDBC Driver
+``` 
 $ wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.44.zip 
 
 $ sudo mkdir /usr/share/java/
@@ -396,20 +420,25 @@ connector-java.jar
 
 $ ls
 mysql-connector-java-5.1.44  mysql-connector-java-5.1.44.zip  mysql-connector-java.jar
-
+``` 
 
 ## Creating Databases
+``` 
 Log into MySQL as the root user:
     $ mysql -u root -p
-    
+``` 
+
 Create databases for the Activity Monitor, Reports Manager, Hive Metastore Server, Sentry Server, Cloudera Navigator Audit Server, and Cloudera Navigator Metadata Server:
+``` 
     create database amon DEFAULT CHARACTER SET utf8;
     create database rman DEFAULT CHARACTER SET utf8;
     create database metastore DEFAULT CHARACTER SET utf8;
     create database sentry DEFAULT CHARACTER SET utf8;
     create database nav DEFAULT CHARACTER SET utf8;
     create database navms DEFAULT CHARACTER SET utf8;
-    
+``` 
+
+``` 
     mysql>     create database amon DEFAULT CHARACTER SET utf8;
     Query OK, 1 row affected (0.00 sec)
     mysql>     create database rman DEFAULT CHARACTER SET utf8;
@@ -422,7 +451,9 @@ Create databases for the Activity Monitor, Reports Manager, Hive Metastore Serve
     Query OK, 1 row affected (0.00 sec)
     mysql>     create database navms DEFAULT CHARACTER SET utf8;
     Query OK, 1 row affected (0.00 sec)
-    
+``` 
+
+``` 
     
     grant all on amon.* TO 'amon'@'%' IDENTIFIED BY 'cloudera';
     grant all on rman.* TO 'rman'@'%' IDENTIFIED BY 'cloudera';
@@ -430,7 +461,9 @@ Create databases for the Activity Monitor, Reports Manager, Hive Metastore Serve
     grant all on sentry.* TO 'sentry'@'%' IDENTIFIED BY 'cloudera';
     grant all on nav.* TO 'nav'@'%' IDENTIFIED BY 'cloudera';
     grant all on navms.* TO 'navms'@'%' IDENTIFIED BY 'cloudera';
-    
+``` 
+
+``` 
     mysql> grant all on amon.* TO 'amon'@'%' IDENTIFIED BY 'cloudera';
     Query OK, 0 rows affected (0.00 sec)
     mysql>     grant all on rman.* TO 'rman'@'%' IDENTIFIED BY 'cloudera';
@@ -443,3 +476,4 @@ Create databases for the Activity Monitor, Reports Manager, Hive Metastore Serve
     Query OK, 0 rows affected (0.00 sec)
     mysql>     grant all on navms.* TO 'navms'@'%' IDENTIFIED BY 'cloudera';
     Query OK, 0 rows affected (0.00 sec)
+``` 
