@@ -59,6 +59,9 @@ INFO  : Starting task [Stage-0:DDL] in serial mode
 INFO  : Completed executing command(queryId=hive_20171005200808_64750aeb-1155-448f-a0a1-03608c1d3afa); Time taken: 0.435 seconds
 INFO  : OK
 No rows affected (0.551 seconds)
+```
+
+```
 0: jdbc:hive2://cdh-srv4.c.safari-lab.interna> GRANT ALL ON SERVER server1 TO ROLE sentry_admin;
 INFO  : Compiling command(queryId=hive_20171005200808_42afd560-7b91-46a2-9638-340428ecdcd8): GRANT ALL ON SERVER server1 TO ROLE sentry_admin
 INFO  : Semantic Analysis Completed
