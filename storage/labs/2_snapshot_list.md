@@ -1,3 +1,5 @@
+# HDFS Lab: Test HDFS Snapshots
+
 List the commands and output for each step below in storage/labs/2_snapshot_test.md.
 
 Create a precious directory in HDFS; 
