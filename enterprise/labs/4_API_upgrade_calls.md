@@ -67,6 +67,36 @@ The Upgrade Wizard displays.
 
 ## Use the API on the command line to:
 * Report the latest available version of the API
+```
+$ curl -u admin:admin 'http://localhost:7180/api/version'
+v17
+```
+
 * Report the CM version
+```
+$ curl -u admin:admin 'http://localhost:7180/api/v17/cm/version'
+{
+  "version" : "5.12.1",
+  "buildUser" : "jenkins",
+  "buildTimestamp" : "20170818-0807",
+  "gitHash" : "9bdee611802535491d400e03c98ef694a2c77d0a",
+  "snapshot" : false
+}
+```
 * List all CM users
+```
+$ curl -u admin:admin 'http://localhost:7180/api/v17/users'
+{
+  "items" : [ {
+    "name" : "admin",
+    "roles" : [ "ROLE_ADMIN" ]
+  }, {
+    "name" : "andreswagner",
+    "roles" : [ "ROLE_ADMIN" ]
+  }, {
+    "name" : "minotaur",
+    "roles" : [ "ROLE_CONFIGURATOR" ]
+  } ]
+}
+```
 * Report the database server in use by CM
