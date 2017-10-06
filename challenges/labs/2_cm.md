@@ -21,6 +21,8 @@ Creating SCM configuration file in /etc/cloudera-scm-server
 Executing:  /usr/java/jdk1.7.0_67-cloudera/bin/java -cp /usr/share/java/mysql-connector-java.jar:/usr/share/java/oracle-connector-java.jar:/usr/share/cmf/schema/../lib/* com.cloudera.enterprise.dbutil.DbCommandExecutor /etc/cloudera-scm-server/db.properties com.cloudera.cmf.db.
 [                          main] DbCommandExecutor              INFO  Successfully connected to database.
 All done, your SCM database is configured correctly!
+``` 
+```
 [andreswagner@cdh-srv2 java]$ sudo service cloudera-scm-server start
 Starting cloudera-scm-server:                              [  OK  ]
 ```
