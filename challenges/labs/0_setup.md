@@ -1,10 +1,14 @@
 * cloud provider: GCE
 
-* instances by IP address and DNS
-  * 
-  *
-  *
-  *
+* instances by: IP address, DNS and Role
+
+IP Address | DNS | Role
+---------- | --- | ----
+10.128.0.5 | cdh-srv1 | MySQL 5.6 \  CDH
+10.128.0.6 | cdh-srv2 | Cloudera Manager \ MIT KDC
+10.128.0.7 | cdh-srv3 | CDH
+10.128.0.8 | cdh-srv4 | CDH
+
 
 * Linux release: centos-release-6-9.el6.12.3.x86_64
 
